@@ -23,6 +23,8 @@ public class SortTest {
         .isEqualTo(List.of(1, 2, 3));
     assertThat(sort(List.of(3, 2, 1)))
         .isEqualTo(List.of(1, 2, 3));
+    assertThat(sort(List.of(1, 2, 3, 4)))
+        .isEqualTo(List.of(1, 2, 3, 4));
   }
 
   private List<Integer> sort(List<Integer> list) {
