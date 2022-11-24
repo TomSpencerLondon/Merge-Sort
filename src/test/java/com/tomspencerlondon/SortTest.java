@@ -10,12 +10,24 @@ public class SortTest {
 
   @Test
   void testSort() {
-    assertThat(sort(asList())).isSorted();
-    assertThat(sort(asList(1))).isSorted();
-    assertThat(sort(asList(1, 2))).isSorted();
+    assertThat(sort(List.of())).isSorted();
+    assertThat(sort(List.of(1))).isSorted();
+    assertThat(sort(List.of(1, 2))).isSorted();
+    assertThat(sort(List.of(2, 1))).isSorted();
   }
 
   private List<Integer> sort(List<Integer> list) {
-    return list;
+    if (list.size() <= 1) {
+      return list;
+    } else {
+      int first = list.get(0);
+      int second = list.get(1);
+
+      if (first > second) {
+        return List.of(second, first);
+      } else {
+        return List.of(first, second);
+      }
+    }
   }
 }
