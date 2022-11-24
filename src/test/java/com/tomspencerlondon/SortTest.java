@@ -17,6 +17,12 @@ public class SortTest {
     assertThat(sort(List.of(2, 1))).isSorted();
     assertThat(sort(List.of(1, 3, 2)))
         .isEqualTo(List.of(1, 2, 3));
+    assertThat(sort(List.of(2, 1, 3)))
+        .isEqualTo(List.of(1, 2, 3));
+    assertThat(sort(List.of(2, 1, 3)))
+        .isEqualTo(List.of(1, 2, 3));
+    assertThat(sort(List.of(3, 2, 1)))
+        .isEqualTo(List.of(1, 2, 3));
   }
 
   private List<Integer> sort(List<Integer> list) {
@@ -25,7 +31,6 @@ public class SortTest {
     } else if (list.size() == 2) {
       int first = list.get(0);
       int second = list.get(1);
-
       if (first > second) {
         return List.of(second, first);
       } else {
@@ -43,7 +48,9 @@ public class SortTest {
       if (last < middle) {
         lessers.add(last);
       }
-
+      if (first > middle) {
+        greaters.add(first);
+      }
       if (last > middle) {
         greaters.add(last);
       }
