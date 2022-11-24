@@ -11,9 +11,10 @@ public class SortTest {
   @Test
   void testSort() {
     assertThat(sort(asList())).isSorted();
+    assertThat(sort(asList(1))).isSorted();
   }
 
   private List<Integer> sort(List<Integer> list) {
-    return asList();
+    return list;
   }
 }
