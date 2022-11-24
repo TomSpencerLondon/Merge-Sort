@@ -24,8 +24,8 @@ public class SortTest {
         .isEqualTo(List.of(1, 2, 3));
     assertThat(sort(List.of(3, 2, 1)))
         .isEqualTo(List.of(1, 2, 3));
-//    assertThat(sort(List.of(1, 2, 3, 4)))
-//        .isEqualTo(List.of(1, 2, 3, 4));
+    assertThat(sort(List.of(1, 2, 3, 4)))
+        .isEqualTo(List.of(1, 2, 3, 4));
   }
 
   private List<Integer> sort(List<Integer> list) {
@@ -40,23 +40,10 @@ public class SortTest {
         return List.of(first, second);
       }
     } else {
-      int first = list.get(1);
       int middle = list.get(0);
-      int last = list.get(2);
-      List<Integer> lessers = new ArrayList<>();
-      List<Integer> greaters = new ArrayList<>();
-      if (first < middle) {
-        lessers.add(first);
-      }
-      if (last < middle) {
-        lessers.add(last);
-      }
-      if (first > middle) {
-        greaters.add(first);
-      }
-      if (last > middle) {
-        greaters.add(last);
-      }
+      List<Integer> lessers = list.stream().filter(x -> x < middle).toList();
+      List<Integer> greaters = list.stream().filter(x -> x > middle).toList();
+
       List<Integer> result = new ArrayList<>();
       result.addAll(sort(lessers));
       result.add(middle);
